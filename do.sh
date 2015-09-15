@@ -38,12 +38,12 @@ sed -e "s/#\?force_color_prompt=.*/force_color_prompt=yes/g" -i /home/$USERNAME/
 apt-get -y install unzip exim4-daemon-light mailutils mutt unattended-upgrades update-notifier-common fail2ban
 dpkg-reconfigure tzdata
 dpkg-reconfigure exim4-config
+sed -e "s/#\?root: .*/root: $USERNAME/g" -i /etc/aliases
 dpkg-reconfigure --priority=low unattended-upgrades
 echo -e "\nUnattended-Upgrade::Mail \"$USERNAME\";" >> /etc/apt/apt.conf.d/50unattended-upgrades
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 service fail2ban restart
 
-/usr/bin/ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.sav
 sed -e "s/#\?Port .*/Port $PORT/g" -i /etc/ssh/sshd_config
 sed -e "s/#\?LoginGraceTime .*/LoginGraceTime 10/g" -i /etc/ssh/sshd_config
