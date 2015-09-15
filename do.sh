@@ -35,7 +35,7 @@ sed -e "s/#\?force_color_prompt=.*/force_color_prompt=yes/g" -i /home/$USERNAME/
 
 ###
 
-apt-get -y install unzip exim4-daemon-light mailutils mutt unattended-upgrades update-notifier-common fail2ban
+apt-get -y install unzip exim4-daemon-light mailutils mutt unattended-upgrades update-notifier-common fail2ban logwatch
 dpkg-reconfigure tzdata
 dpkg-reconfigure exim4-config
 sed -e "s/#\?root: .*/root: $USERNAME/g" -i /etc/aliases
@@ -43,6 +43,9 @@ dpkg-reconfigure --priority=low unattended-upgrades
 echo -e "\nUnattended-Upgrade::Mail \"$USERNAME\";" >> /etc/apt/apt.conf.d/50unattended-upgrades
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 service fail2ban restart
+mkdir /var/cache/logwatch
+cp /usr/share/logwatch/default.conf/logwatch.conf /etc/logwatch/conf/
+sed -e "s/#\?MailTo = .*/MailTo = $USERNAME/g" -i /etc/logwatch/conf/logwatch.conf
 
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.sav
 sed -e "s/#\?Port .*/Port $PORT/g" -i /etc/ssh/sshd_config
