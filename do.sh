@@ -57,4 +57,10 @@ sed -e "s/#\?PasswordAuthentication .*/PasswordAuthentication no/g" -i /etc/ssh/
 echo -e "MaxAuthTries 3\nUseDNS no\nAllowUsers $USERNAME" >> /etc/ssh/sshd_config
 service ssh restart
 
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo -e "/swapfile   none    swap    sw    0   0" >> /etc/fstab
+
 apt-get install git-core build-essential
