@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo -e "Acquire::ForceIPv4 \"true\";" > /etc/apt/apt.conf.d/99force-ipv4
 apt-get -y update
 apt-get -y upgrade
 
@@ -63,4 +64,4 @@ mkswap /swapfile
 swapon /swapfile
 echo -e "/swapfile   none    swap    sw    0   0" >> /etc/fstab
 
-apt-get install git-core build-essential
+apt-get install git-core build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev
