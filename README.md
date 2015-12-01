@@ -1,1 +1,1 @@
-wget -O - https://raw.githubusercontent.com/ilushechkin/scripts/master/do.sh | bash
+`wget https://raw.githubusercontent.com/ilushechkin/scripts/master/do.sh ; bash ./do.sh`
