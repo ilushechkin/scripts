@@ -55,7 +55,7 @@ sed -e "s/#\?RSAAuthentication .*/RSAAuthentication yes/g" -i /etc/ssh/sshd_conf
 sed -e "s/#\?PubkeyAuthentication .*/PubkeyAuthentication yes/g" -i /etc/ssh/sshd_config
 sed -e "s/#\?PermitRootLogin .*/PermitRootLogin no/g" -i /etc/ssh/sshd_config
 sed -e "s/#\?PasswordAuthentication .*/PasswordAuthentication no/g" -i /etc/ssh/sshd_config
-echo -e "MaxAuthTries 3\nUseDNS no\nAllowUsers $USERNAME" >> /etc/ssh/sshd_config
+echo -e "\nMaxAuthTries 3\nUseDNS no\nAllowUsers $USERNAME" >> /etc/ssh/sshd_config
 service ssh restart
 
 fallocate -l 4G /swapfile
