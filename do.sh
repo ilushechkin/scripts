@@ -3,6 +3,7 @@
 echo -e "Acquire::ForceIPv4 \"true\";" > /etc/apt/apt.conf.d/99force-ipv4
 apt-get -y update
 apt-get -y upgrade
+apt-get -y dist-upgrade
 
 ###
 
@@ -36,7 +37,7 @@ sed -e "s/#\?force_color_prompt=.*/force_color_prompt=yes/g" -i /home/$USERNAME/
 
 ###
 
-apt-get -y install unzip exim4-daemon-light mailutils mutt unattended-upgrades update-notifier-common fail2ban logwatch
+apt-get -y install unzip exim4-daemon-light mailutils mutt unattended-upgrades update-notifier-common fail2ban logwatch curl multitail landscape-common
 dpkg-reconfigure tzdata
 dpkg-reconfigure exim4-config
 sed -e "s/#\?root: .*/root: $USERNAME/g" -i /etc/aliases
