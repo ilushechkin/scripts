@@ -48,6 +48,7 @@ service fail2ban restart
 mkdir /var/cache/logwatch
 cp /usr/share/logwatch/default.conf/logwatch.conf /etc/logwatch/conf/
 sed -e "s/#\?MailTo = .*/MailTo = $USERNAME/g" -i /etc/logwatch/conf/logwatch.conf
+echo -e "1 Time\(s\)" > /etc/logwatch/conf/ignore.conf
 
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.sav
 sed -e "s/#\?Port .*/Port $PORT/g" -i /etc/ssh/sshd_config
