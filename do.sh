@@ -66,4 +66,4 @@ mkswap /swapfile
 swapon /swapfile
 echo -e "/swapfile   none    swap    sw    0   0" >> /etc/fstab
 
-apt-get install git-core build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev
+apt-get install git-core build-essential libtool autotools-dev autoconf pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev software-properties-common
