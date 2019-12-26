@@ -53,7 +53,6 @@ echo -e "1 Time\(s\)" > /etc/logwatch/conf/ignore.conf
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.sav
 sed -e "s/#\?Port .*/Port $PORT/g" -i /etc/ssh/sshd_config
 sed -e "s/#\?LoginGraceTime .*/LoginGraceTime 10/g" -i /etc/ssh/sshd_config
-sed -e "s/#\?RSAAuthentication .*/RSAAuthentication yes/g" -i /etc/ssh/sshd_config
 sed -e "s/#\?PubkeyAuthentication .*/PubkeyAuthentication yes/g" -i /etc/ssh/sshd_config
 sed -e "s/#\?PermitRootLogin .*/PermitRootLogin no/g" -i /etc/ssh/sshd_config
 sed -e "s/#\?PasswordAuthentication .*/PasswordAuthentication no/g" -i /etc/ssh/sshd_config
